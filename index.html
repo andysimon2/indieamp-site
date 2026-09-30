@@ -115,6 +115,15 @@
     padding:28px 30px;max-width:840px;margin-bottom:26px}
   .about p{font-size:15px;color:var(--ink-2)}
   .about p:last-child{margin-bottom:0}
+  .about .entity{font-size:13.5px;color:var(--ink-3);margin-top:18px;
+    padding-top:16px;border-top:1px solid var(--rule-soft)}
+
+  /* client logo strip — hidden until 2+ nameable clients (see commented block under the hero) */
+  .clients{padding:36px 0 8px;border-bottom:1px solid var(--rule)}
+  .clients .t{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.11em;
+    text-transform:uppercase;color:var(--ink-3);text-align:center;margin:0 0 20px}
+  .clients .row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:28px 48px}
+  .clients .row img{height:34px;width:auto;opacity:.7;filter:grayscale(1)}
 
   .contactband{background:var(--blue-wash);border:1px solid var(--blue-3);border-radius:10px;
     padding:26px 30px;max-width:840px;margin-bottom:26px}
@@ -165,6 +174,18 @@
     <span class="chip">One isolated database per client</span>
   </div>
 </header>
+
+<!-- CLIENT LOGOS — reveal only when you have 2+ clients whose logos you can show.
+     Keep it to logos, nothing else. Drop each logo in /logos and add one <img> per client,
+     then delete these two comment lines to make the band live.
+<div class="clients">
+  <div class="t">The networks we power</div>
+  <div class="row">
+    <img src="logos/client-one.svg" alt="">
+    <img src="logos/client-two.svg" alt="">
+  </div>
+</div>
+-->
 
 <section id="what">
   <h2>What it does</h2>
@@ -222,8 +243,9 @@
 <section id="about">
   <h2>About</h2>
   <div class="about">
-    <p><span data-name>Platform</span> is operated by <strong>Simon United LLC, d/b/a West Highland Ventures</strong>, of Rochester, New York. The platform grew out of the social measurement system built for the Brixy retail network — roughly 130 independent baby and children's specialty stores across the United States — where it has powered network dashboards, brand reporting, and weekly member insights since 2025.</p>
-    <p>We work with membership organizations that believe what we believe: independent businesses deserve tools that let their collective strength be seen.</p>
+    <p><span data-name>Platform</span> is built for membership organizations — buying groups, franchise systems, and professional networks — and the independent businesses inside them.</p>
+    <p>We believe something simple: independent businesses are individually small and collectively powerful, and their combined social reach should be easy to see, easy to prove, and easy to grow. Most tools are built for one brand or one store. <span data-name>Platform</span> is built for the whole network.</p>
+    <p>It comes from real operating experience — running the day-to-day social measurement, brand reporting, and member insights for a network of independent retailers, not guessing at the problem from the outside.</p>
   </div>
 </section>
 
@@ -238,7 +260,7 @@
 
 <footer><div class="frame">
   <div class="footrow">
-    <span>© <span id="yr">2026</span> Simon United LLC d/b/a West Highland Ventures</span>
+    <span>© <span id="yr">2026</span> <span data-name>IndieAmp</span></span>
     <a href="privacy.html">Privacy Policy</a>
     <a href="terms.html">Terms of Use</a>
     <a href="#contact">Contact</a>
