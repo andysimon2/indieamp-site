@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Platform</title>
+<meta name="description" content="Social performance measurement for membership organizations and their independent members.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --ground:#F4F6FA; --surface:#FFFFFF; --surface-2:#E8EDF5;
+    --ink:#131A26; --ink-2:#4C5668; --ink-3:#7D8798;
+    --rule:#D8DEE9; --rule-soft:#E6EBF3;
+    --blue:#204C8D; --blue-2:#4B76B1; --blue-3:#AFC2DC; --blue-wash:#E7EDF7;
+    --green:#2C6244; --green-wash:#E3F0E8;
+    --shadow:0 1px 2px rgba(19,26,38,.05), 0 10px 28px -18px rgba(19,26,38,.25);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#0D131C; --surface:#151D29; --surface-2:#1D2735;
+      --ink:#E6EBF4; --ink-2:#A4AEC0; --ink-3:#707C90;
+      --rule:#2B3646; --rule-soft:#222C3A;
+      --blue:#86ABDF; --blue-2:#5F85BC; --blue-3:#3C526C; --blue-wash:#18253A;
+      --green:#79BE98; --green-wash:#17291F;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -18px rgba(0,0,0,.7);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0D131C; --surface:#151D29; --surface-2:#1D2735;
+    --ink:#E6EBF4; --ink-2:#A4AEC0; --ink-3:#707C90;
+    --rule:#2B3646; --rule-soft:#222C3A;
+    --blue:#86ABDF; --blue-2:#5F85BC; --blue-3:#3C526C; --blue-wash:#18253A;
+    --green:#79BE98; --green-wash:#17291F;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -18px rgba(0,0,0,.7);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--ground); color:var(--ink);
+    font-family:'Montserrat',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+    font-size:16px; line-height:1.7; -webkit-font-smoothing:antialiased;
+  }
+  .frame{max-width:1080px;margin:0 auto;padding:0 24px}
+  a{color:var(--blue);text-decoration-color:var(--blue-3);text-underline-offset:2px}
+  a:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:2px}
+  strong{font-weight:600}
+  .mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+
+  /* nav */
+  nav{border-bottom:1px solid var(--rule);background:var(--surface)}
+  .navrow{display:flex;align-items:center;gap:26px;padding:18px 0;flex-wrap:wrap}
+  .wordmark{font-weight:700;font-size:20px;letter-spacing:-.015em;color:var(--blue);text-decoration:none}
+  .navlinks{display:flex;gap:22px;margin-left:auto;flex-wrap:wrap}
+  .navlinks a{font-size:14px;color:var(--ink-2);text-decoration:none;font-weight:500}
+  .navlinks a:hover{color:var(--blue)}
+
+  /* hero */
+  header.hero{padding:72px 0 56px;border-bottom:1px solid var(--rule)}
+  .eyebrow{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;
+    letter-spacing:.13em;text-transform:uppercase;color:var(--blue-2);margin:0 0 20px}
+  h1{font-size:clamp(34px,5vw,52px);line-height:1.08;letter-spacing:-.022em;font-weight:700;
+    color:var(--ink);margin:0 0 22px;text-wrap:balance;max-width:21ch}
+  h1 .accent{color:var(--blue)}
+  .standfirst{font-size:19px;line-height:1.65;color:var(--ink-2);max-width:58ch;margin:0 0 30px}
+  .chips{display:flex;flex-wrap:wrap;gap:10px}
+  .chip{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;
+    color:var(--blue);background:var(--blue-wash);border:1px solid var(--blue-3);
+    padding:7px 14px;border-radius:999px;white-space:nowrap}
+
+  /* sections */
+  section{padding:60px 0 8px}
+  h2{font-size:27px;line-height:1.2;letter-spacing:-.015em;font-weight:700;color:var(--blue);
+    margin:0 0 10px;text-wrap:balance}
+  .lede{font-size:16.5px;color:var(--ink-2);max-width:62ch;margin:0 0 26px}
+  h3{font-size:17px;font-weight:600;color:var(--ink);margin:0 0 8px;letter-spacing:-.006em}
+  p{margin:0 0 15px}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-bottom:26px}
+  .card{background:var(--surface);box-shadow:var(--shadow);padding:26px 26px 28px;border-radius:10px}
+  .card .k{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.11em;
+    text-transform:uppercase;color:var(--blue-2);margin-bottom:12px}
+  .card p{font-size:14.5px;line-height:1.65;color:var(--ink-2);margin:0}
+  .card p b{color:var(--ink);font-weight:600}
+
+  ol.steps{list-style:none;counter-reset:s;padding:0;margin:0 0 26px;display:grid;gap:1px;
+    background:var(--rule);border:1px solid var(--rule);border-radius:10px;overflow:hidden;max-width:840px}
+  ol.steps li{counter-increment:s;background:var(--surface);padding:20px 24px 20px 64px;position:relative;
+    font-size:15px;line-height:1.6;color:var(--ink-2)}
+  ol.steps li::before{content:counter(s,decimal-leading-zero);position:absolute;left:24px;top:20px;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;color:var(--blue-2)}
+  ol.steps li b{color:var(--ink);font-weight:600}
+
+  .scroll{overflow-x:auto;margin:0 0 18px;border:1px solid var(--rule);border-radius:10px;background:var(--surface)}
+  table{border-collapse:collapse;width:100%;min-width:560px;font-size:14.5px}
+  thead th{font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:500;font-size:10.5px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);text-align:left;
+    padding:13px 18px;border-bottom:1px solid var(--rule);background:var(--surface-2);white-space:nowrap}
+  tbody td{padding:14px 18px;border-bottom:1px solid var(--rule-soft);vertical-align:top;
+    color:var(--ink-2);line-height:1.55}
+  tbody tr:last-child td{border-bottom:none}
+  td b{color:var(--ink);font-weight:600}
+
+  ul.never{list-style:none;padding:0;margin:0 0 26px;max-width:840px;
+    border:1px solid var(--rule);border-radius:10px;background:var(--surface);overflow:hidden}
+  ul.never li{padding:15px 22px 15px 48px;border-bottom:1px solid var(--rule-soft);
+    font-size:15px;line-height:1.55;color:var(--ink-2);position:relative}
+  ul.never li:last-child{border-bottom:none}
+  ul.never li::before{content:"✕";position:absolute;left:22px;top:15px;color:var(--blue-2);
+    font-weight:700;font-size:13px}
+  ul.never b{color:var(--ink);font-weight:600}
+
+  .about{background:var(--surface);box-shadow:var(--shadow);border-radius:10px;
+    padding:28px 30px;max-width:840px;margin-bottom:26px}
+  .about p{font-size:15px;color:var(--ink-2)}
+  .about p:last-child{margin-bottom:0}
+
+  .contactband{background:var(--blue-wash);border:1px solid var(--blue-3);border-radius:10px;
+    padding:26px 30px;max-width:840px;margin-bottom:26px}
+  .contactband p{margin:0;font-size:15.5px;color:var(--ink-2)}
+  .contactband b{color:var(--ink)}
+
+  footer{margin-top:56px;border-top:1px solid var(--rule);padding:30px 0 60px;
+    font-size:13.5px;color:var(--ink-3);line-height:1.8}
+  footer a{color:var(--ink-2)}
+  .footrow{display:flex;flex-wrap:wrap;gap:8px 28px}
+
+  /* name preview picker — REMOVE FOR PRODUCTION (set SHOW_NAME_PICKER=false) */
+  #namepicker{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:50;
+    background:var(--surface);border:1px solid var(--rule);border-radius:12px;box-shadow:var(--shadow);
+    padding:10px 12px;font-size:12.5px;color:var(--ink-2);max-width:min(92vw,320px)}
+  #namepicker .t{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px}
+  #namepicker .opts{display:flex;flex-wrap:wrap;gap:6px}
+  #namepicker button{font-family:'Montserrat',sans-serif;font-size:12.5px;font-weight:600;
+    border:1px solid var(--rule);background:var(--surface-2);color:var(--ink-2);
+    border-radius:999px;padding:5px 12px;cursor:pointer}
+  #namepicker button.on{background:var(--blue);border-color:var(--blue);color:#fff}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<nav><div class="frame navrow">
+  <a class="wordmark" href="#" data-name>Platform</a>
+  <div class="navlinks">
+    <a href="#what">What it does</a>
+    <a href="#how">How it works</a>
+    <a href="#data">Data &amp; privacy</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</div></nav>
+
+<div class="frame">
+
+<header class="hero">
+  <p class="eyebrow">Social performance measurement for member networks</p>
+  <h1>Every member's reach.<br><span class="accent">One network's story.</span></h1>
+  <p class="standfirst"><span data-name>Platform</span> helps membership organizations — retail buying groups, franchise systems, and professional consortia — measure, prove, and grow the collective social reach of their independent members across TikTok, Instagram, and Facebook.</p>
+  <div class="chips">
+    <span class="chip">Official platform APIs only</span>
+    <span class="chip">Member consent, always</span>
+    <span class="chip">One isolated database per client</span>
+  </div>
+</header>
+
+<section id="what">
+  <h2>What it does</h2>
+  <p class="lede">Independent businesses are individually small and collectively powerful. <span data-name>Platform</span> makes that collective power visible — to the network that organizes it and the brands that sponsor it.</p>
+  <div class="cards">
+    <div class="card">
+      <div class="k">Measure</div>
+      <p><b>Every member's organic social activity in one dashboard.</b> Posts, engagement, views, and reach across TikTok, Instagram, and Facebook — gathered through each platform's official API after the member connects their own account.</p>
+    </div>
+    <div class="card">
+      <div class="k">Prove</div>
+      <p><b>Brand-ready reporting.</b> Share of voice, top posts, campaign performance, and network totals — the proof of performance that brand partners and sponsors ask for, exportable and current.</p>
+    </div>
+    <div class="card">
+      <div class="k">Publish</div>
+      <p><b>Optional content publishing, member-controlled.</b> Networks can share ready-to-post campaigns; each member chooses what to schedule to their own accounts, with platform-compliant commercial-content disclosure built in.</p>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <h2>How it works</h2>
+  <ol class="steps">
+    <li><b>A network joins.</b> The organization's roster is loaded into its own private, isolated environment — no client's data ever shares a database with another's.</li>
+    <li><b>Members get a personal connect link.</b> Each independent business receives its own secure invitation from its network.</li>
+    <li><b>Members authorize with the official login.</b> Connection happens through TikTok's and Meta's own OAuth consent screens — we never see or store passwords, and members can revoke access at any time from their platform settings.</li>
+    <li><b>The picture comes to life.</b> Network dashboards, brand reports, and each member's own weekly performance email — updated continuously from live data.</li>
+  </ol>
+</section>
+
+<section id="data">
+  <h2>Data &amp; privacy, in plain English</h2>
+  <p class="lede">We read the minimum needed to do the job, with consent, through official channels. The full detail is in our <a href="privacy.html">Privacy Policy</a> — this is the honest summary.</p>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>What we access</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td><b>Public profile basics</b> — account name, handle, follower count</td><td>To identify the connected account and show network membership accurately</td></tr>
+        <tr><td><b>Content the member posted</b> — captions, dates, links, formats</td><td>To attribute activity to campaigns and brands, and surface top posts</td></tr>
+        <tr><td><b>Engagement metrics</b> — likes, comments, shares, views, reach</td><td>To measure performance for the member and the network</td></tr>
+        <tr><td><b>Publishing permissions</b> <span class="mono" style="font-size:11px">(only if the member opts in)</span></td><td>To post content the member has explicitly chosen and scheduled</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3 style="margin-top:22px">What we never do</h3>
+  <ul class="never">
+    <li><b>No passwords.</b> Authorization is OAuth-only, on the platforms' own screens, revocable by the member at any time.</li>
+    <li><b>No selling data.</b> A member's data serves their own network's reporting — nothing else.</li>
+    <li><b>No cross-client sharing.</b> Each client organization's data lives in its own isolated database and is never visible to another client.</li>
+    <li><b>No posting without consent.</b> Nothing is ever published to a member's account unless that member explicitly scheduled or approved it.</li>
+    <li><b>No consumer tracking.</b> We measure business accounts' content performance — we do not profile or target consumers.</li>
+  </ul>
+</section>
+
+<section id="about">
+  <h2>About</h2>
+  <div class="about">
+    <p><span data-name>Platform</span> is operated by <strong>Simon United LLC, d/b/a West Highland Ventures</strong>, of Rochester, New York. The platform grew out of the social measurement system built for the Brixy retail network — roughly 130 independent baby and children's specialty stores across the United States — where it has powered network dashboards, brand reporting, and weekly member insights since 2025.</p>
+    <p>We work with membership organizations that believe what we believe: independent businesses deserve tools that let their collective strength be seen.</p>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <div class="contactband">
+    <p><b>For networks, brand partners, and members:</b> <a data-email href="#">hello@example.com</a> · We respond within one business day. Members with questions about a connection or their data can also reach us at the same address.</p>
+  </div>
+</section>
+
+</div>
+
+<footer><div class="frame">
+  <div class="footrow">
+    <span>© <span id="yr">2026</span> Simon United LLC d/b/a West Highland Ventures</span>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Use</a>
+    <a href="#contact">Contact</a>
+  </div>
+</div></footer>
+
+<!-- Name preview picker: development aid. Set SHOW_NAME_PICKER=false before production deploy. -->
+<div id="namepicker" hidden>
+  <div class="t">Name preview</div>
+  <div class="opts" id="nameopts"></div>
+</div>
+
+<script>
+  // ===== PLATFORM CONFIG — the single place the name lives =====
+  // When the name is final: set name/domain/email, set SHOW_NAME_PICKER=false, deploy.
+  var PLATFORM = { name: "IndieAmp", domain: "indieamp.app", email: "hello@indieamp.app" };
+  var SHOW_NAME_PICKER = false;
+  var NAME_CANDIDATES = ["IndieAmp"];
+
+  function applyName(n){
+    document.querySelectorAll("[data-name]").forEach(function(el){ el.textContent = n; });
+    document.title = n + " — Social performance for member networks";
+    var em = "hello@" + n.toLowerCase() + ".app";
+    document.querySelectorAll("[data-email]").forEach(function(el){
+      el.textContent = em; el.setAttribute("href", "mailto:" + em);
+    });
+    document.querySelectorAll("#nameopts button").forEach(function(b){
+      b.classList.toggle("on", b.textContent === n);
+    });
+  }
+
+  document.getElementById("yr").textContent = new Date().getFullYear();
+
+  var startName = PLATFORM.name;
+  if (SHOW_NAME_PICKER) {
+    try { var saved = localStorage.getItem("name-preview"); if (saved && NAME_CANDIDATES.indexOf(saved) !== -1) startName = saved; } catch(e){}
+  }
+
+  if (SHOW_NAME_PICKER) {
+    var pick = document.getElementById("namepicker");
+    var opts = document.getElementById("nameopts");
+    NAME_CANDIDATES.forEach(function(n){
+      var b = document.createElement("button");
+      b.textContent = n;
+      b.addEventListener("click", function(){
+        applyName(n);
+        try { localStorage.setItem("name-preview", n); } catch(e){}
+      });
+      opts.appendChild(b);
+    });
+    pick.hidden = false;
+  }
+  applyName(startName);
+</script>
+
+</body>
+</html>
