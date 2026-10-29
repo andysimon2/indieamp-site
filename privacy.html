@@ -39,13 +39,15 @@ p{margin:0 0 15px}
 ul{margin:0 0 15px;padding-left:22px}
 li{margin-bottom:7px}
 strong{color:var(--ink);font-weight:600}
-footer{margin-top:72px;border-top:1px solid var(--line);padding:28px 0 64px;font-size:14px;color:var(--muted)}
+footer{margin-top:72px;border-top:1px solid var(--line);padding:38px 0 25px;color:var(--muted)}
+.footwrap{max-width:1200px;padding:0 40px;margin:auto}
 footer a{color:var(--ink)}
 .foot{display:flex;justify-content:space-between;gap:20px;align-items:center}
+.foot p,.foot a{font-size:12px}
 .foot p{margin:0;max-width:800px;text-wrap:balance}
 .footlinks{display:flex;gap:16px;flex-shrink:0}
 .footlinks a{white-space:nowrap}
-@media(max-width:800px){.foot{flex-wrap:wrap}.footlinks{flex-wrap:wrap}}
+@media(max-width:800px){.foot{flex-wrap:wrap}.footlinks{flex-wrap:wrap}.footwrap{padding:0 24px}}
 @media(max-width:600px){h1{font-size:38px}h2{font-size:26px}.navrow{height:72px}.logo{font-size:21px}.frame{padding:0 20px}}
 .appicon{display:block;width:34px;height:34px;border-radius:8px}
 </style>
@@ -163,7 +165,7 @@ Rochester, NY 14618</p>
 
 </div>
 
-<footer><div class="frame"><div class="foot">
+<footer><div class="footwrap"><div class="foot">
   <p><strong>IndieAmp</strong> &nbsp; © <span id="yr">2026</span> IndieAmp. All rights reserved. IndieAmp™ is owned and operated by Simon United, LLC.</p>
   <div class="footlinks"><a href="index.html">Home</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a><a href="mailto:hello@indieamp.app">Contact</a></div>
 </div></div></footer>
