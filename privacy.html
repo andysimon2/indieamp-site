@@ -43,7 +43,8 @@ footer{margin-top:72px;border-top:1px solid var(--line);padding:28px 0 64px;font
 footer a{color:var(--ink)}
 .foot{display:flex;justify-content:space-between;gap:20px;align-items:center}
 .foot p{margin:0;max-width:800px;text-wrap:balance}
-.footlinks{display:flex;gap:16px}
+.footlinks{display:flex;gap:16px;flex-shrink:0}
+.footlinks a{white-space:nowrap}
 @media(max-width:800px){.foot{flex-wrap:wrap}.footlinks{flex-wrap:wrap}}
 @media(max-width:600px){h1{font-size:38px}h2{font-size:26px}.navrow{height:72px}.logo{font-size:21px}.frame{padding:0 20px}}
 .appicon{display:block;width:34px;height:34px;border-radius:8px}
