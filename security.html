@@ -1,0 +1,67 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Security & privacy — IndieAmp</title><meta name="description" content="What IndieAmp reads from connected accounts, why, what it never does, and how the service protects member data: isolated databases per client, encrypted tokens, official APIs only."><meta property="og:type" content="website"><meta property="og:title" content="Security & privacy — IndieAmp"><meta property="og:description" content="What IndieAmp reads from connected accounts, why, what it never does, and how the service protects member data: isolated databases per client, encrypted tokens, official APIs only."><meta name="theme-color" content="#173b30"><link rel="icon" href="/favicon.ico?v=2" sizes="any"><link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml"><link rel="icon" href="/icon-192.png?v=3" type="image/png" sizes="192x192"><link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2"><link rel="canonical" href="https://indieamp.app/security.html"><link rel="stylesheet" href="site.css?v=1">
+<!-- Google Analytics 4 (visitor counts and approximate location; Google signals and ad personalization off) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2YFGQVSRQZ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-2YFGQVSRQZ',{allow_google_signals:false,allow_ad_personalization_signals:false});</script>
+</head>
+<body>
+<a class="skip" href="#top">Skip to content</a>
+<header><div class="wrap"><a class="logo" href="index.html"><img class="appicon" src="/icon-192.png?v=3" width="52" height="52" alt="IndieAmp app icon">IndieAmp</a>
+<nav id="nav" aria-label="Main navigation"><div class="links"><a href="platform.html">Platform</a><a href="how-it-works.html">How it works</a><a href="security.html" aria-current="page">Security & privacy</a><a href="about.html">About</a><a href="contact.html">Contact</a></div><a class="button" href="contact.html">Request a demo</a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav" onclick="var n=document.getElementById('nav');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">Menu</button></nav></div></header>
+<main id="top">
+<div class="wrap">
+<section class="page-hero"><div class="eyebrow">Security &amp; privacy</div><h1>Data &amp; privacy, in plain English.</h1>
+<p class="lead">We read the minimum needed to do the job, with consent, through official channels. The full detail is in our <a href="privacy.html">Privacy Policy</a> — this page is the honest summary, and how the service is built to keep it true.</p></section>
+
+<section class="section privacy" style="padding-top:40px"><div class="intro"><div class="eyebrow">What we access, and why</div><h2>Four kinds of data, each with a reason.</h2></div>
+<table><thead>
+<tr>
+<th>WHAT WE ACCESS</th>
+<th>WHY</th></tr></thead><tbody>
+<tr>
+<td>Public profile basics — account name, handle, follower count</td>
+<td>To identify the connected account and show network membership accurately</td></tr>
+<tr>
+<td>Content the member posted — captions, dates, links, formats</td>
+<td>To attribute activity to campaigns and brands, and surface top posts</td></tr>
+<tr>
+<td>Engagement metrics — likes, comments, shares, views, reach</td>
+<td>To measure performance for the member and the network</td></tr>
+<tr>
+<td>Publishing permissions (only if the member opts in)</td>
+<td>To post content the member has explicitly chosen and scheduled</td></tr></tbody></table>
+
+<h3>What we never do</h3>
+<ul>
+<li><strong>No passwords.</strong> Authorization is OAuth-only, on the platforms&#39; own screens, revocable by the member at any time.</li>
+
+<li><strong>No selling data.</strong> A member&#39;s data serves their own network&#39;s reporting — nothing else.</li>
+
+<li><strong>No cross-client sharing.</strong> Each client organization&#39;s data lives in its own isolated database and is never visible to another client.</li>
+
+<li><strong>No posting without consent.</strong> Nothing is ever published to a member&#39;s accounts unless that member explicitly scheduled or approved it.</li>
+
+<li><strong>No consumer tracking.</strong> We measure business accounts&#39; content performance — we do not profile or target consumers.</li></ul>
+
+<div class="trust"><span>✓ Official platform APIs only</span><span>✓ Member consent, always</span><span>✓ One isolated database per client</span><span>TikTok · Instagram · Facebook</span></div>
+</section>
+
+<section class="section"><div class="intro"><div class="eyebrow">How we protect it</div><h2>Built so one client’s data stays that client’s.</h2></div>
+<div class="cards two">
+<article class="card"><h3>One isolated database per client</h3><p>Each client organization runs on its own database and its own web address. A request is tied to the organization it arrived for, and there is no shared pool of member data across clients.</p></article>
+<article class="card"><h3>Access tokens encrypted at rest</h3><p>The platform tokens members grant are stored encrypted, with a separate key per client. They are decrypted only at the moment a read or a publish is made on the member’s behalf.</p></article>
+<article class="card"><h3>Official APIs, least privilege</h3><p>Every read and every publish goes through TikTok’s and Meta’s official APIs with the permissions each platform has reviewed and approved for IndieAmp. Publishing permissions are requested only when a network uses publishing.</p></article>
+<article class="card"><h3>Revocation that takes effect</h3><p>A member can disconnect from the account page or from the platform itself. Posts queued for a disconnected account are cancelled, and a token the platform reports as invalid is flagged for the member and the network at once.</p></article>
+<article class="card"><h3>Staff access by named sign-in</h3><p>Network staff and brand contacts sign in with single-use email links. Access is per organization, can be removed by the organization, and ends immediately when it is.</p></article>
+<article class="card"><h3>Backups, encrypted</h3><p>Each client’s database is backed up nightly to encrypted storage, with the decryption key held offline, so a mistake can be undone without the backup itself becoming a copy of the data anyone can read.</p></article>
+</div></section>
+
+<section class="section"><div class="prose"><h2>The documents</h2><p>The <a href="privacy.html">Privacy Policy</a> sets out what is collected, why, how long it is kept and how to ask for it to be deleted. The <a href="terms.html">Terms of Use</a> govern the service for networks, members and brand partners. Questions about either go to <a href="mailto:hello@indieamp.app">hello@indieamp.app</a>.</p></div></section>
+<section class="closing" id="contact"><div><h2>Let’s see what your network can do.</h2><p>See member publishing and network reporting in a demo for your association.</p><p>Member questions? Contact <a href="mailto:hello@indieamp.app">hello@indieamp.app</a>.</p></div><a class="button" href="contact.html">Request a demo</a></section></div>
+</main>
+<footer><div class="wrap"><div class="foot">
+<p><strong>IndieAmp</strong> &nbsp; © 2026 IndieAmp. All rights reserved. IndieAmp™ is owned and operated by Simon United, LLC, Rochester, New York.</p>
+<div class="footlinks"><a href="index.html">Home</a><a href="platform.html">Platform</a><a href="how-it-works.html">How it works</a><a href="security.html">Security &amp; privacy</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a></div>
+</div></div></footer>
+<!-- Vercel Web Analytics (cookieless; static-site install: the script tag, no package) -->
+<script defer src="/_vercel/insights/script.js"></script>
+</body></html>
