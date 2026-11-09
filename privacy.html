@@ -26,8 +26,12 @@ nav{border-bottom:1px solid var(--line)}
 .mark i:nth-child(4){height:15px;background:#5E9A7C}
 .navrow a.back{font-size:14px;font-weight:700;color:#fff;background:var(--ink);padding:11px 20px;border-radius:8px;text-decoration:none}
 .navrow a.back:hover{background:var(--green)}
-.navlinks{display:flex;gap:22px;margin-left:auto;margin-right:22px}.navlinks a{font-size:14px;font-weight:500;color:var(--ink);text-decoration:none}.navlinks a:hover{color:var(--green)}
-@media(max-width:900px){.navlinks{display:none}}
+.navlinks{display:flex;gap:22px;margin-left:auto;margin-right:22px}.navlinks a{font-size:14px;font-weight:500;color:var(--ink);text-decoration:none;white-space:nowrap}.navlinks a:hover{color:var(--green)}
+nav .frame.navrow{max-width:1280px;padding:0 44px}.navrow a.back{white-space:nowrap}
+@media(min-width:1500px){nav .frame.navrow{max-width:1360px}}
+@media(max-width:1050px) and (min-width:801px){nav .frame.navrow{padding:0 30px}}
+@media(max-width:1100px){.navlinks{display:none}}
+@media(max-width:800px){nav .frame.navrow{padding:0 24px}}
 a{color:var(--green);text-decoration-color:#a9c4b6;text-underline-offset:2px}
 a:focus-visible{outline:3px solid #739f2f;outline-offset:4px}
 header.doc{padding:56px 0 8px}
