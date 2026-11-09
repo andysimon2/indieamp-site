@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Contact — IndieAmp</title><meta name="description" content="Request a demo of IndieAmp for your association, co-op or buying group, or reach member support at hello@indieamp.app."><meta property="og:type" content="website"><meta property="og:title" content="Contact — IndieAmp"><meta property="og:description" content="Request a demo of IndieAmp for your association, co-op or buying group, or reach member support at hello@indieamp.app."><meta name="theme-color" content="#173b30"><link rel="icon" href="/favicon.ico?v=2" sizes="any"><link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml"><link rel="icon" href="/icon-192.png?v=3" type="image/png" sizes="192x192"><link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2"><link rel="canonical" href="https://indieamp.app/contact.html"><link rel="stylesheet" href="site.css?v=4">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Contact — IndieAmp</title><meta name="description" content="Request a demo of IndieAmp for your association, co-op or buying group, or send a message to member support."><meta property="og:type" content="website"><meta property="og:title" content="Contact — IndieAmp"><meta property="og:description" content="Request a demo of IndieAmp for your association, co-op or buying group, or send a message to member support."><meta name="theme-color" content="#173b30"><link rel="icon" href="/favicon.ico?v=2" sizes="any"><link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml"><link rel="icon" href="/icon-192.png?v=3" type="image/png" sizes="192x192"><link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2"><link rel="canonical" href="https://indieamp.app/contact.html"><link rel="stylesheet" href="site.css?v=4">
 <!-- Google Analytics 4 (visitor counts and approximate location; Google signals and ad personalization off) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2YFGQVSRQZ"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-2YFGQVSRQZ',{allow_google_signals:false,allow_ad_personalization_signals:false});</script>
@@ -13,15 +13,41 @@
 <p class="lead">A demo for your network, a question from a member store or a brand partner, or anything about the service.</p></section>
 
 <section class="section"><div class="contact-grid">
-<div class="prose"><h2>Request a demo</h2>
-<p>We will show you the network dashboard, the member portal and a brand page with sample data, and talk through what a rollout to your members looks like.</p>
-<p>Tell us the name of your organization, roughly how many member stores you have, and which platforms matter most to them. We reply within one business day.</p>
-<a class="button" href="mailto:hello@indieamp.app?subject=IndieAmp%20demo">Request a demo by email</a>
-<p style="margin-top:22px;font-size:15px">Or write to <a href="mailto:hello@indieamp.app">hello@indieamp.app</a> with “Demo” in the subject.</p></div>
+<div class="prose"><h2>Send us a message</h2>
+<p>A demo for your network, a question about the service, or anything else. We reply within one business day.</p>
+<form class="cform" id="contact-form" method="post" action="/api/contact" novalidate>
+<div class="row">
+<label>Your name<input name="name" type="text" autocomplete="name" maxlength="120" required></label>
+<label>Your email<input name="email" type="email" autocomplete="email" maxlength="200" required></label>
+</div>
+<div class="row">
+<label>Organization <span style="font-weight:400;color:var(--muted)">(optional)</span><input name="org" type="text" autocomplete="organization" maxlength="160"></label>
+<label>I am a<select name="role"><option value="network">Network or association</option><option value="member">Member store</option><option value="brand">Brand partner</option><option value="other">Other</option></select></label>
+</div>
+<label>Message<textarea name="message" maxlength="4000" required placeholder="For a demo: your organization’s name, roughly how many member stores, and which platforms matter most to them."></textarea></label>
+<label class="hp" aria-hidden="true">Website<input name="website" type="text" tabindex="-1" autocomplete="off"></label>
+<input type="hidden" name="t" id="cform-t" value="">
+<div><button class="button" type="submit" id="cform-send">Send message</button></div>
+<p class="status" id="cform-status" role="status" aria-live="polite"></p>
+<p class="note">We use what you send only to reply to you. Nothing is added to a mailing list.</p>
+</form>
+<script>
+(function(){var f=document.getElementById('contact-form');if(!f)return;document.getElementById('cform-t').value=String(Date.now());
+var st=document.getElementById('cform-status'),btn=document.getElementById('cform-send'),q=new URLSearchParams(location.search);
+if(q.get('sent')==='1'){st.textContent='Thank you — your message is on its way. We reply within one business day.';st.className='status ok';f.querySelectorAll('input,textarea,select,button').forEach(function(e){e.disabled=true});}
+else if(q.get('error')){st.textContent='We could not send your message. Please try again in a minute.';st.className='status err';}
+f.addEventListener('submit',function(ev){ev.preventDefault();if(!f.reportValidity())return;btn.disabled=true;st.className='status';st.textContent='Sending…';
+var body={};new FormData(f).forEach(function(v,k){body[k]=v});
+fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(body)}).then(function(r){return r.json().catch(function(){return {ok:false}}).then(function(d){return {s:r.status,d:d}})}).then(function(x){
+if(x.d&&x.d.ok){st.textContent='Thank you — your message is on its way. We reply within one business day.';st.className='status ok';f.querySelectorAll('input,textarea,select').forEach(function(e){e.disabled=true});}
+else{st.textContent=(x.d&&x.d.error)||'We could not send your message. Please try again in a minute.';st.className='status err';btn.disabled=false;}
+}).catch(function(){st.textContent='We could not send your message. Please check your connection and try again.';st.className='status err';btn.disabled=false;});});})();
+</script>
+</div>
 <div>
-<article class="card"><h3>Member stores</h3><p>Your network sends you a personal link to your portal, and your weekly report email carries it too. If you have lost it, ask your network’s contact or write to <a href="mailto:hello@indieamp.app">hello@indieamp.app</a> with your store’s name and your network.</p><p style="margin-top:10px">To disconnect an account, use the Disconnect button on your account page, or remove IndieAmp in TikTok’s or Facebook’s own app settings.</p></article>
+<article class="card"><h3>Member stores</h3><p>Your network sends you a personal link to your portal, and your weekly report email carries it too. If you have lost it, ask your network’s contact or <a href="#contact-form">send us a message</a> with your store and network names</p><p style="margin-top:10px">To disconnect an account, use the Disconnect button on your account page, or remove IndieAmp in TikTok’s or Facebook’s own app settings.</p></article>
 <article class="card" style="margin-top:20px"><h3>Brand partners</h3><p>Your network gives you access to your brand page. Questions about the numbers on it go to your network first; questions about the service come to us.</p></article>
-<article class="card" style="margin-top:20px"><h3>Company</h3><address><strong>Simon United, LLC (IndieAmp)</strong><br>137 Westland Avenue<br>Rochester, NY 14618<br>United States<br><a href="mailto:hello@indieamp.app">hello@indieamp.app</a></address></article>
+<article class="card" style="margin-top:20px"><h3>Company</h3><address><strong>Simon United, LLC (IndieAmp)</strong><br>137 Westland Avenue<br>Rochester, NY 14618<br>United States</address></article>
 </div></div></section>
 
 <section class="section"><div class="prose"><h2>Privacy and data requests</h2><p>To ask what data IndieAmp holds about your store or to have it deleted, write to <a href="mailto:hello@indieamp.app">hello@indieamp.app</a> from the address your network has on file. The <a href="privacy.html">Privacy Policy</a> explains what is collected and how long it is kept.</p></div></section>
