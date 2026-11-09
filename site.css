@@ -40,3 +40,8 @@ body{font-family:'Instrument Sans',Arial,sans-serif}h1,h2,.serif{font-family:'Ne
 .steps.detail{grid-template-columns:repeat(2,1fr)}
 @media(max-width:800px){.menu-toggle{display:inline-flex}header .wrap{position:relative}.links{display:none}nav.open .links{display:flex;flex-direction:column;align-items:flex-start;gap:4px;position:absolute;top:78px;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);padding:14px 24px 18px;z-index:9}nav.open .links a{display:block;padding:10px 0;font-size:16px}nav .button{display:none}nav.open .button{display:inline-flex;position:absolute;top:calc(78px + 1px);right:24px;z-index:10;margin-top:14px}
 .page-hero{padding:36px 0 18px}.page-hero h1{font-size:38px}.cards,.cards.two,.contact-grid,.steps.detail{grid-template-columns:1fr}.prose h2{font-size:28px}.prose p{font-size:16px}}
+
+.links .signin{font-weight:700;margin-left:6px}.links{gap:22px}code{font-family:ui-monospace,Menlo,monospace;font-size:14px;background:#edf0e5;padding:1px 6px;border-radius:5px;color:var(--ink)}
+
+@media(min-width:801px) and (max-width:1050px){.links{gap:14px}.links a{font-size:13px}}
+@media(min-width:801px) and (max-width:1050px){.menu-toggle{display:inline-flex}header .wrap{position:relative}.links{display:none}nav.open .links{display:flex;flex-direction:column;align-items:flex-start;gap:4px;position:absolute;top:94px;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);padding:14px 30px 18px;z-index:9}nav.open .links a{display:block;padding:10px 0;font-size:16px}.links a{white-space:nowrap}}
